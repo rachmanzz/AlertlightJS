@@ -1,0 +1,22 @@
+{
+  "name": "alertLightJS",
+  "title": "alertLightJS",
+  "description": "AlertlightJS is a combination of sweet alerts with jquery",
+  "version": "1.0.0",
+  "main": "js/AlertlightJS.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rachmanzz/AlertlightJS.git"
+  },
+  "keywords": [
+    "alertLightJS",
+    "javascript",
+    "library"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jquery" : "~1.12.*",
+    "bootstrap" : "latest",
+    "sweetalert": "latest"
+  }
+}
