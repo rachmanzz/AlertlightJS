@@ -2,6 +2,7 @@
   "name": "rachmanzz/alertlightjs",
   "description": "AlertlightJS is a combination of sweet alerts with jquery.",
   "version":"1.0.2",
+  "minimum-stability": "dev",
   "keywords": [
     "alertLightJS",
     "javascript",
