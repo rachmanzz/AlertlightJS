@@ -4,7 +4,7 @@ AlertlightJS is a combination of sweet alerts with jquery
     $('#yourID').click(function(){
             lightJS.$swalPost({
                 title : "Sweet Alert Tittle",
-                text  : "Sweet Alert Tittle.",
+                text  : "Sweet Alert Text.",
                 type  : "warning",
                 confirmText:"Yes!",
                 cancelText:"No!"
