@@ -1,5 +1,5 @@
 {
-  "name": "alertLightJS",
+  "name": "alertlightjs",
   "title": "alertLightJS",
   "description": "AlertlightJS is a combination of sweet alerts with jquery",
   "version": "1.0.0",
@@ -13,10 +13,11 @@
     "javascript",
     "library"
   ],
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "jquery" : "~1.12.*",
     "bootstrap" : "latest",
     "sweetalert": "latest"
+  },
+  "devDependencies": {
   }
 }
