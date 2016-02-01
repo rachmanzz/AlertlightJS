@@ -43,8 +43,10 @@ AlertlightJS is a combination of sweet alerts with jquery
 ####or
     swal(['title','text','warning']); // type: warning | success | error
     
-#Install using Bower 
+###Install using Bower 
     bower install alertLightJS -save
+###Install using npm
+    npm install --save alertlightjs
 
 #Remember
 Remember to load boostrap, sweet-alert, and Jquery script 
