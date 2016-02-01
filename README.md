@@ -1,2 +1,2 @@
 # AlertlightJS
-AlertlightJS merupakan kombinasi antara alert manis dengan jquery
+AlertlightJS is a combination of sweet alerts with jquery
