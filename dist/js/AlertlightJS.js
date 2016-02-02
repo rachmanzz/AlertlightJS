@@ -1,6 +1,3 @@
-/**
- * Created by Quesha-Lania on 01/02/2016.
- */
 var alertlightJS = {
     $post:function(url,input,callback){
         $(function(){
