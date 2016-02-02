@@ -57,4 +57,4 @@ AlertlightJS is a combination of sweet alerts with jquery
 
 #Remember
 Remember to load boostrap, sweet-alert, and Jquery script 
-    
+cd
