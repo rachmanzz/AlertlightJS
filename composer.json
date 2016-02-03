@@ -9,7 +9,7 @@
     "library"
   ],
   "require": {
-    "rachmanzz/alertlightjs": "1.0.2",
+    "rachmanzz/alertlightjs": "@dev",
     "twbs/bootstrap": "3.*"
   },
   "authors": [
@@ -18,6 +18,5 @@
       "email": "rachman.sd@gmail.com"
     }
   ],
-  "minimum-stability": "stable",
   "license": "MIT" 
 }
