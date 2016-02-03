@@ -3,12 +3,11 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
 
-    <title>Alertlightjs by rachmanzz</title>
-      <link rel="stylesheet" type="text/css" href="sweetalert/dist/sweetalert.css">
+    <title>Alertlightjs</title>
+
   </head>
 
   <body>
@@ -32,8 +31,6 @@
 <a id="alertlightjs" class="anchor" href="#alertlightjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AlertlightJS</h1>
 
 <p>AlertlightJS is a combination of sweet alerts with jquery</p>
-<h3>Example</h3>
-<button class="btn btn-sm" id="clickMe">Click Me</button>
 
 <h3>
 <a id="install-using-bower" class="anchor" href="#install-using-bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install using Bower</h3>
@@ -129,30 +126,5 @@
 <p>Remember to load boostrap, sweet-alert, and Jquery script </p>
       </section>
     </div>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="sweetalert/dist/sweetalert.min.js"></script>
-    <script src="dist/js/AlertlightJS.js"></script>
-    <script>
-        $('#clickMe').click(function(){
-            alertlightJS.$swalGet({     // $swalGet for GET Method
-                title : "Sweet Alert Tittle",
-                text  : "Sweet Alert Text.",
-                type  : "warning",
-                confirmText:"Yes!",
-                cancelText:"No!"
-            },{
-                url : "http://rachmanzz.github.io/AlertlightJS/app.html",
-                input   : {
-                }
-            },function(isConfirm,data,swal){
-                if(isConfirm){
-                    swal(['title','text']);
-                }else{
-                    swal(['title','text']);
-                }
-            });
-        });
-    </script>
   </body>
 </html>
