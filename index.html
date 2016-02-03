@@ -135,7 +135,7 @@
     <script src="dist/js/AlertlightJS.js"></script>
     <script>
         $('#clickMe').click(function(){
-            alertlightJS.$swalPost({     // $swalGet for GET Method
+            alertlightJS.$swalGet({     // $swalGet for GET Method
                 title : "Sweet Alert Tittle",
                 text  : "Sweet Alert Text.",
                 type  : "warning",
@@ -144,7 +144,7 @@
             },{
                 url : "app.json",
                 input   : {
-                    name  : "Your Input"
+
                 }
             },function(isConfirm,data,swal){
                 if(isConfirm){
