@@ -32,6 +32,8 @@
 <a id="alertlightjs" class="anchor" href="#alertlightjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AlertlightJS</h1>
 
 <p>AlertlightJS is a combination of sweet alerts with jquery</p>
+<h3>Example</h3>
+<button class="btn btn-sm" id="clickMe">Click Me</button>
 
 <h3>
 <a id="install-using-bower" class="anchor" href="#install-using-bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install using Bower</h3>
@@ -131,5 +133,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="sweetalert/dist/sweetalert.min.js"></script>
     <script src="dist/js/AlertlightJS.js"></script>
+    <script>
+        $('#clickMe').click(function(){
+            alertlightJS.$swalPost({     // $swalGet for GET Method
+                title : "Sweet Alert Tittle",
+                text  : "Sweet Alert Text.",
+                type  : "warning",
+                confirmText:"Yes!",
+                cancelText:"No!"
+            },{
+                url : "app.json",
+                input   : {
+                    name  : "Your Input"
+                }
+            },function(isConfirm,data,swal){
+                if(isConfirm){
+                    swal(['title','text']);
+                }else{
+                    swal(['title','text']);
+                }
+            });
+        });
+    </script>
   </body>
 </html>
