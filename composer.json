@@ -10,7 +10,6 @@
     "library"
   ],
   "require": {
-    "rachmanzz/alertlightjs": "@dev",
     "twbs/bootstrap": "3.*"
   },
   "authors": [
