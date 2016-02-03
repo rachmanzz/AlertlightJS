@@ -18,6 +18,6 @@
       "email": "rachman.sd@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "MIT" 
 }
