@@ -6,7 +6,8 @@
   "keywords": [
     "alertLightJS",
     "javascript",
-    "library"
+    "library",
+    "sweet-alert"
   ],
   "require": {
     "twbs/bootstrap": "3.*"
@@ -17,5 +18,5 @@
       "email": "rachman.sd@gmail.com"
     }
   ],
-  "license": "MIT" 
+  "license": "MIT"
 }
