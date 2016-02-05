@@ -19,5 +19,6 @@
     "sweetalert": "latest"
   },
   "devDependencies": {
-  }
+  },
+  "license" : "MIT"
 }
