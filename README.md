@@ -5,13 +5,14 @@ AlertlightJS is a combination of sweet alerts with jquery
 ###Install using npm
     npm install --save alertlightjs
 ###Initialize the plugin
-    <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="http://t4t5.github.io/sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="dist/sweetalert.min.js"></script>
-     <script src="dist/js/AlertlightJS.js"></script>
+    <script src="http://t4t5.github.io/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="dist/js/alertlightjs.min.js"></script>
+###Online Source    
+    <script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs.min.js"></script>
 ##Using
     $('#yourID').click(function(){
             alertlightJS.$swalPost({     // $swalGet for GET Method
