@@ -29,8 +29,8 @@ var alertlightJS = {
                             });
                         });
                 }else{
-                    callback(false,{},function(opt){
-                        swal(opt[0], opt[1], opt[2] || "error");
+                    callback(false,{},function(msg){
+                        alertify.error(msg);
                     });
                 }
             }
