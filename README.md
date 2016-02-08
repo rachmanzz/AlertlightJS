@@ -1,5 +1,5 @@
-# AlertlightJS
-AlertlightJS is a combination of sweet alerts with jquery
+# alertlightJS
+alertlightJS is a combination of sweet alerts with jquery
 ###Install using Bower 
     bower install alertLightJS -save
 ###Install using npm
@@ -47,9 +47,19 @@ AlertlightJS is a combination of sweet alerts with jquery
        // false
      }
 ####get data after post:
-     data['status'] // get status after your data is submit. return true/false
-     data['data'] // obtain raw data
-     data['value'] // data have been parse to Json
+     data.status // get status after your data is submit. return true/false
+     data.value // data have been parse to Json
+####obtain raw data
+     alertlightJS.setup({json:false});
+     alertlightJS.$swalPost(
+        // alertlightJS script here, data.value to obtain raw data 
+     );
+####other method
+     alertlightJS.setup({json:false},function(alertJS){
+        alertJS.$swalPost(
+                        // alertlightJS script here 
+                     );
+     });
 ####show alert after confirm:
     swal(['title','text']); // if isConfirm == true, swal type will be set "success" / false will be set "error"
      

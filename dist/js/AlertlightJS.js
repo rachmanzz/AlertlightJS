@@ -1,10 +1,23 @@
 var alertlightJS = {
+    $setup :function(data,callback){
+        this.data=data;
+        if(callback!=null){
+            callback(this);
+        }
+    },
+    data:{
+        json :true
+    },
     $post:function(url,input,callback){
         $(function(){
             $.post(url,input,
                 function(data,status){
-                    var value= jQuery.parseJSON(data);
-                    callback(data,value,status);
+                    if(alertlightJS.data.json){
+                        var value= jQuery.parseJSON(data);
+                        callback(value,status);
+                    }else{
+                        callback(data,status);
+                    }
                 });
         });
     },
@@ -23,10 +36,16 @@ var alertlightJS = {
                 if (isConfirm) {
                     $.post(postOpt['url'],postOpt['input'],
                         function(data,status){
-                            var value= jQuery.parseJSON(data);
-                            callback(true,{data:data,value:value,status:status},function(opt){
-                                swal(opt[0], opt[1], opt[2] || "success");
-                            });
+                            if(alertlightJS.data.json){
+                                var value= jQuery.parseJSON(data);
+                                callback(true,{value:value,status:status},function(opt){
+                                    swal(opt[0], opt[1], opt[2] || "success");
+                                });
+                            }else{
+                                callback(true,{value:data,status:status},function(opt){
+                                    swal(opt[0], opt[1], opt[2] || "success");
+                                });
+                            }
                         });
                 }else{
                     callback(false,{},function(msg){
@@ -51,10 +70,16 @@ var alertlightJS = {
                 if (isConfirm) {
                     $.get(postOpt['url'],postOpt['input'],
                         function(data,status){
-                            var value= jQuery.parseJSON(data);
-                            callback(true,{data:data,value:value,status:status},function(opt){
-                                swal(opt[0], opt[1], opt[2] || "success");
-                            });
+                            if(alertlightJS.data.json){
+                                var value= jQuery.parseJSON(data);
+                                callback(true,{value:value,status:status},function(opt){
+                                    swal(opt[0], opt[1], opt[2] || "success");
+                                });
+                            }else{
+                                callback(true,{value:data,status:status},function(opt){
+                                    swal(opt[0], opt[1], opt[2] || "success");
+                                });
+                            }
                         });
                 }else{
                     callback(false,{},function(opt){
@@ -83,10 +108,16 @@ var alertlightJS = {
                         if (isConfirm) {
                             $.post($post['url'],$post['input'],
                                 function(data,status){
-                                    var value= jQuery.parseJSON(data);
-                                    callback(true,{data:data,value:value,status:status},function(opt){
-                                        swal(opt[0], opt[1], opt[2] || "success");
-                                    });
+                                    if(alertlightJS.data.json){
+                                        var value= jQuery.parseJSON(data);
+                                        callback(true,{value:value,status:status},function(opt){
+                                            swal(opt[0], opt[1], opt[2] || "success");
+                                        });
+                                    }else{
+                                        callback(true,{value:data,status:status},function(opt){
+                                            swal(opt[0], opt[1], opt[2] || "success");
+                                        });
+                                    }
                                 });
                         }else{
                             callback(false,{},function(opt){
