@@ -65,7 +65,11 @@ alertlightJS is a combination of sweet alerts with jquery
      
 ####or
     swal(['title','text','warning']); // type: warning | success | error
-
+####New Feature
+    alertlightJS.$table(); // insert data to table
+    alertlightJS.$foreach(); // insert data to table, list, ect || universal functional
+Documentation update later..
+    
 #Remember
 Remember to load boostrap, sweet-alert, and Jquery script 
 #other
