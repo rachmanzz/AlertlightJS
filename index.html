@@ -3,38 +3,35 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>alertlightjs || Make it more easy</title>
+
+    <title>Alertlightjs by rachmanzz</title>
   </head>
 
   <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Alertlightjs</h1>
-          <h2>AlertlightJS is a combination of sweet alerts with jquery</h2>
-        </header>
+    <header>
+      <div class="container">
+        <h1>Alertlightjs</h1>
+        <h2>AlertlightJS is a combination of sweet alerts with jquery</h2>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/rachmanzz/AlertlightJS/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/rachmanzz/AlertlightJS/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/rachmanzz/AlertlightJS" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        <section id="downloads">
+          <a href="https://github.com/rachmanzz/AlertlightJS/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/rachmanzz/AlertlightJS/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/rachmanzz/AlertlightJS" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
         </section>
+      </div>
+    </header>
 
-        <hr>
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="alertlightjs" class="anchor" href="#alertlightjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>alertlightJS</h1>
 
-        <section id="main_content">
-          <h1>
-<a id="alertlightjs" class="anchor" href="#alertlightjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AlertlightJS</h1>
-
-<p>AlertlightJS is a combination of sweet alerts with jquery</p>
+<p>alertlightJS is a combination of sweet alerts with jquery</p>
 
 <h3>
 <a id="install-using-bower" class="anchor" href="#install-using-bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install using Bower</h3>
@@ -53,14 +50,18 @@
 
 <pre><code>&lt;link rel="stylesheet" type="text/css" href="http://t4t5.github.io/sweetalert/dist/sweetalert.css"&gt;
 &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"&gt;
-
 &lt;script src="//code.jquery.com/jquery-1.12.0.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"&gt;&lt;/script&gt;
 &lt;script src="http://t4t5.github.io/sweetalert/dist/sweetalert.min.js"&gt;&lt;/script&gt;
- &lt;script src="dist/js/alertlightjs.min.js"&gt;&lt;/script&gt;
+&lt;script src="dist/js/alertlightjs.min.js"&gt;&lt;/script&gt;
 </code></pre>
-<h3><a id="online-source" class="anchor" href="#online-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Online Source</h3>
-<pre><code>&lt;script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs.min.js"&gt;&lt;/script&gt;</code></pre>
+
+<h3>
+<a id="online-source" class="anchor" href="#online-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Online Source</h3>
+
+<pre><code>&lt;script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs.min.js"&gt;&lt;/script&gt;
+</code></pre>
+
 <h2>
 <a id="using" class="anchor" href="#using" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using</h2>
 
@@ -108,9 +109,27 @@
 <h4>
 <a id="get-data-after-post" class="anchor" href="#get-data-after-post" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>get data after post:</h4>
 
-<pre><code> data['status'] // get status after your data is submit. return true/false
- data['data'] // obtain raw data
- data['value'] // data have been parse to Json
+<pre><code> data.status // get status after your data is submit. return true/false
+ data.value // data have been parse to Json
+</code></pre>
+
+<h4>
+<a id="obtain-raw-data" class="anchor" href="#obtain-raw-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>obtain raw data</h4>
+
+<pre><code> alertlightJS.setup({json:false});
+ alertlightJS.$swalPost(
+    // alertlightJS script here, data.value to obtain raw data 
+ );
+</code></pre>
+
+<h4>
+<a id="other-method" class="anchor" href="#other-method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>other method</h4>
+
+<pre><code> alertlightJS.setup({json:false},function(alertJS){
+    alertJS.$swalPost(
+                    // alertlightJS script here 
+                 );
+ });
 </code></pre>
 
 <h4>
@@ -129,15 +148,14 @@
 <a id="remember" class="anchor" href="#remember" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remember</h1>
 
 <p>Remember to load boostrap, sweet-alert, and Jquery script </p>
-        </section>
 
-        <footer>
-          Alertlightjs is maintained by <a href="https://github.com/rachmanzz">rachmanzz</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+<h1>
+<a id="other" class="anchor" href="#other" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>other</h1>
 
-        
-      </div>
+<p><a href="http://rachmanzz.github.io/alertifylight/">http://rachmanzz.github.io/alertifylight/</a></p>
+      </section>
     </div>
+
+    
   </body>
 </html>
