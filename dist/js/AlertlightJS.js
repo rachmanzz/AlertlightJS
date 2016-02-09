@@ -1,12 +1,13 @@
 var alertlightJS = {
     $setup :function(data,callback){
-        this.data=data;
+        $.extend(this.data,data);
         if(callback!=null){
             callback(this);
         }
     },
     data:{
-        json :true
+        json :true,
+        symbol : "(["
     },
     $post:function(url,input,callback){
         $(function(){
@@ -127,6 +128,52 @@ var alertlightJS = {
                     }
                 );
             });
+        });
+    },
+    $table : function(table,value,callback){
+        $.each(value, function(key,value){
+            var data;
+            callback({key:key,value:value},function(value){
+                $.each(value, function(key,value){
+                    data += '<td>'+value+'</td>';
+                });
+            });
+            $('table'+table+' > tbody:last').append('<tr>'+data+'</tr>');
+        });
+    },
+    $foreach : function(reff,value){
+        var regex_i,regex;
+        if(alertlightJS.data.symbol==="{{"){
+            regex_i =/{{([a-z.]+)}}/gi;
+            regex   =/{{([a-z.]+)}}/;
+        }
+        else if(alertlightJS.data.symbol==="(["){
+            regex_i =/\(\[([a-z.]+)\]\)/gi;
+            regex   =/\(\[([a-z.]+)\]\)/;
+        }
+        else if(alertlightJS.data.symbol==="@("){
+            regex_i =/@\(([a-z.]+)\)\)/gi;
+            regex   =/@\(([a-z.]+)\)\)/;
+        }
+        else{
+            regex_i =/@\(([a-z.]+)\)\)/gi;
+            regex   =/@\(([a-z.]+)\)\)/;
+        }
+        var text    =$(reff).html();
+        $(reff).html("");
+        var matches = text.match(regex_i);
+        function replace_str(test,txt,values){
+            var string=txt;
+            $.each(test, function(key,value){
+                var data=(value.match(regex))[1];
+                string =string.replace(value,values[data]);
+            });
+            return string;
+        }
+        $.each(value, function(keys,values){
+            var html;
+            html +=replace_str(matches,text,values);
+            $(reff).append(html);
         });
     }
 };
