@@ -1,1 +1,1 @@
-uglifyjs --compress --mangle -- alertlightJS.js > alertlightjs2.min.js
+uglifyjs --compress --mangle -- alertlightJS.js > alertlightjs.min.js
