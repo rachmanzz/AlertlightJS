@@ -144,24 +144,25 @@ var alertlightJS = {
     $foreach : function(reff,value){
         var regex_i,regex;
         if(alertlightJS.data.symbol==="{{"){
-            regex_i =/{{([a-z.]+|[a-z.++]+)}}/gi;
-            regex   =/{{([a-z.]+|[a-z.++]+)}}/;
+            regex_i =/{{([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)}}/gi;
+            regex   =/{{([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)}}/;
         }
         else if(alertlightJS.data.symbol==="(["){
-            regex_i =/\(\[([a-z.]+|[a-z.++]+)\]\)/gi;
-            regex   =/\(\[([a-z.]+|[a-z.++]+)\]\)/;
+            regex_i =/\(\[([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\]\)/gi;
+            regex   =/\(\[([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\]\)/;
         }
         else if(alertlightJS.data.symbol==="@("){
-            regex_i =/@\(([a-z.]+|[a-z.++]+)\)\)/gi;
-            regex   =/@\(([a-z.]+|[a-z.++]+)\)\)/;
+            regex_i =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/gi;
+            regex   =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/;
         }
         else{
-            regex_i =/@\(([a-z.]+|[a-z.++]+)\)\)/gi;
-            regex   =/@\(([a-z.]+|[a-z.++]+)\)\)/;
+            regex_i =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/gi;
+            regex   =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/;
         }
         var text    =$(reff).html();
         $(reff).html("");
         var num=1;
+        var numSet=false;
         var matches = text.match(regex_i);
         function replace_str(test,txt,values){
             var string=txt;
@@ -169,7 +170,16 @@ var alertlightJS = {
                 var data=(value.match(regex))[1];
                 if(data==='num++'){
                     string =string.replace(value,num++);
-                }else{
+                }
+                else if((/[a-z.]+\[\d+\]\+/).test(data)){
+                    if(numSet===false){
+                        num=(data.match(/num\[(\d+)\]\+/))[1];
+                        numSet=true;
+                    }
+                    string =string.replace(value,num++);
+                }
+                else if(values[data]===undefined){}
+                else{
                     string =string.replace(value,values[data]);
                 }
 
