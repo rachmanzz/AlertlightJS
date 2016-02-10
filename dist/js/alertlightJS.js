@@ -11,6 +11,7 @@ var alertlightJS = {
         json :true,
         symbol : "(["
     },
+    store:{},
     $post:function(url,input,callback){
         $(function(){
             $.post(url,input,
@@ -162,6 +163,14 @@ var alertlightJS = {
             regex   =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/;
         }
         var text    =$(reff).html();
+        if($(reff).data('live-cache')!=undefined||$(reff).data('live-cache')!=""){
+            var cache   =$(reff).data('live-cache');
+            if(alertlightJS.store[cache]!==undefined){
+                text = alertlightJS.store[cache];
+            }else{
+                alertlightJS.store[cache] = text;
+            }
+        }
         $(reff).html("");
         var num=1;
         var numSet=false;
