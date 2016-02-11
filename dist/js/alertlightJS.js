@@ -3,6 +3,8 @@ var alertlightJS = {
         $.extend(this.data,data);
         if(callback!=null){
             callback(this);
+        }else{
+            return this;
         }
     },
     data:{
@@ -49,8 +51,8 @@ var alertlightJS = {
                             }
                         });
                 }else{
-                    callback(false,{},function(msg){
-                        alertify.error(msg);
+                    callback(false,{},function(opt){
+                        swal(opt[0], opt[1], opt[2] || "error");
                     });
                 }
             }
