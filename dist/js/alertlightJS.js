@@ -193,7 +193,6 @@ var alertlightJS = {
                 else{
                     string =string.replace(value,values[data]);
                 }
-
             });
             return string;
         }

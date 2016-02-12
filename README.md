@@ -4,6 +4,8 @@ alertlightJS is a combination of sweet alerts with jquery
     bower install alertLightJS -save
 ###Install using npm
     npm install --save alertlightjs
+###Install using composer 
+    composer require rachmanzz/alertlightjs
 ###Initialize the plugin
     <link rel="stylesheet" type="text/css" href="http://t4t5.github.io/sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
