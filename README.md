@@ -49,7 +49,7 @@ alertlightJS is a combination of sweet alerts with jquery
        // false
      }
 ####get data after post:
-     data.status // get status after your data is submit. return true/false
+     data.status // get status after your data is submit. return success/error
      data.value // data have been parse to Json
 ####obtain raw data
      alertlightJS.setup({json:false});
