@@ -22,6 +22,7 @@
         typeof swalOpt.extra === "object" && action(function(){
             $.extend(swal,swalOpt.extra);
         });
+        return swal;
     };
     var alertlightJS=function(set){
         typeof set==="object" && $.extend(setUp,set);
@@ -61,7 +62,7 @@
             swal(setUp.originalOptSwal?swalOption:swalOpt(swalOption),function(isConfirm){
                 if(swalOption.type === "input"){
                     postOpt(isConfirm,function(postOpt,callback){
-                        return this.$post(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
+                        alertlightJS.prototype.$post(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
                             typeof callback === "function" && action(function(){
                                 callback(true,{value:data,status:status},function(title,text,type){
                                     typeof title === "string" && typeof text === "string" ? action(function(){
@@ -77,7 +78,7 @@
                     });
                 }
                 else if(isConfirm){
-                    return this.$post(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
+                    alertlightJS.prototype.$post(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
                         typeof callback === "function" && action(function(){
                             callback(true,{value:data,status:status},function(title,text,type){
                                 typeof title === "string" && typeof text === "string" ? action(function(){
@@ -92,7 +93,7 @@
                     });
                 }else{
                     typeof callback === "function" && action(function(){
-                        callback(true,{},function(title,text,type){
+                        callback(false,{},function(title,text,type){
                             typeof title === "string" && typeof text === "string" ? action(function(){
                                 swal(title,text,typeof type === "string"? type : "error");
                             }):action(function(){
@@ -109,7 +110,7 @@
             swal(setUp.originalOptSwal?swalOption:swalOpt(swalOption),function(isConfirm){
                 if(swalOption.type === "input"){
                     postOpt(isConfirm,function(postOpt,callback){
-                        return this.$get(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
+                        alertlightJS.prototype.$get(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
                             typeof callback === "function" && action(function(){
                                 callback(true,{value:data,status:status},function(title,text,type){
                                     typeof title === "string" && typeof text === "string" ? action(function(){
@@ -233,8 +234,8 @@
         }
     };
     global.alertlightJS= alertlightJS;
-
-
+    global.$$=new alertlightJS();
+    global.$alrt=new alertlightJS();
 })(window !== "undefined"? window : this,jQuery !== "undefined"? jQuery : "error",function(action){
     typeof action==="function" && action();
 });

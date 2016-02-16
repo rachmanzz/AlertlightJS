@@ -171,6 +171,7 @@ var alertlightJS = {
                 alertlightJS.store[cache] = text;
             }
         }
+
         $(reff).html("");
         var num=1;
         var numSet=false;
