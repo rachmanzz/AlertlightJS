@@ -195,6 +195,7 @@
                     store[cache] = text;
                 }
             }
+            $(reff).html("");
             matches=text.match(regex_i);
             typeof value === "object" ? action(function(){
                 function replace_str(test,txt,values){
