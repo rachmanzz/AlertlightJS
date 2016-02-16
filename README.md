@@ -1,4 +1,4 @@
-# alertlightJS V.0.2.1  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/wiki/send-data)
+# alertlightJS V.0.2.1  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/releases)
 alertlightJS is a combination of sweet alerts with jquery
 ###Install
     bower install alertLightJS -save
