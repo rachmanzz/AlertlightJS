@@ -10,7 +10,7 @@ alertlightJS is a combination of sweet alerts with jquery
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="http://t4t5.github.io/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="dist/alertlightjs.js"></script>
+    <script src="dist/alertlightjs.min.js"></script>
 ###Online Source    
     <script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs-0-2-1.min.js"></script>
 ##Usage
