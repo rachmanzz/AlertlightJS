@@ -12,7 +12,7 @@ alertlightJS is a combination of sweet alerts with jquery
     <script src="http://t4t5.github.io/sweetalert/dist/sweetalert.min.js"></script>
     <script src="dist/alertlightjs.js"></script>
 ###Online Source    
-    <script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs.min.js"></script>
+    <script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs-0-2-1.min.js"></script>
 ##Usage
     $('#yourID').click(function(){
             var myAlert= new alertlightJS();
