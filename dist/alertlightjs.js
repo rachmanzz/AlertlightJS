@@ -240,29 +240,3 @@
 })(window !== "undefined"? window : this,jQuery !== "undefined"? jQuery : "error",function(action){
     typeof action==="function" && action();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
