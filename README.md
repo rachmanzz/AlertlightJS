@@ -1,8 +1,8 @@
-# alertlightJS V.0.2.1  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/releases)
+# alertlightJS V.0.2.2  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/releases)
 alertlightJS is a combination of sweet alerts with jquery
 
 refer to branch master for new update, because not all of npm, bower,and composer package has been update.
-###Bug fix
+###Bug fix 0.2.2
     - .$foreach() looping without removing symbols
 ###Install
     bower install alertLightJS -save
