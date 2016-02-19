@@ -73,7 +73,7 @@ refer to branch master for new update, because not all of npm, bower,and compose
 #####.$swalPost | $swalGet
 |Method Get|Method Post| 
 |---|---|
-|.$swalGet(swalOpt,callback)|.$swalPost(swalOpt,callback)|
+|.$swalGet(swalOpt,postOpt)|.$swalPost(swalOpt,postOpt)|
 |.$swalGet(swalOpt,postOpt,callback)|.$swalPost(swalOpt,postOpt,callback)|
 
 usage [readmore here](https://github.com/rachmanzz/AlertlightJS/wiki/show-alert-&-send)
