@@ -1,13 +1,13 @@
 (function(global,$,action){
     $==="error"&& action(function(){
-        alert('jQuey Undefined');
+        alert('jQuery Undefined');
         return false;
     });
     typeof swal !== "function" && action(function(){
         alert('sweet-alert Undefined');
         return false;
     });
-    var setUp={json:true,symbol:"([",originalOptSwal:false},store={},swalOpt=function(swalOpt){
+    var setUp={json:true,symbolBegin:"\\(\\[",symbolEnd:"\\]\\)",originalOptSwal:false},store={},swalOpt=function(swalOpt){
         var swal={
             title: swalOpt['title'] || "title",
             text: swalOpt['text'] || "text",
@@ -35,8 +35,14 @@
         $post : function(url,input,callback){
             $.post(url,typeof input==="object"?input:{},function(data,status){
                 setUp.json ? action(function(){
-                    typeof callback === "function" ? callback(typeof $.parseJSON(data)==="object" ? $.parseJSON(data) : data,status) : action(function(){
-                        typeof input === "function" && input(typeof $.parseJSON(data)==="object" ? $.parseJSON(data) : data,status);
+                    var isJsonObject;
+                    try{
+                        isJsonObject =$.parseJSON(data);
+                    }catch (e){
+                        isJsonObject = data;
+                    }
+                    typeof callback === "function" ? callback(isJsonObject,status) : action(function(){
+                        typeof input === "function" && input(isJsonObject,status);
                     });
                 }):action(function(){
                     typeof callback === "function" ? callback(data,status) : action(function(){
@@ -48,8 +54,14 @@
         $get : function(url,input,callback){
             $.get(url,typeof input==="object"?input:{},function(data,status){
                 setUp.json ? action(function(){
-                    typeof callback === "function" ? callback(typeof $.parseJSON(data)==="object" ? $.parseJSON(data) : data,status) : action(function(){
-                        typeof input === "function" && input(typeof $.parseJSON(data)==="object" ? $.parseJSON(data) : data,status);
+                    var isJsonObject;
+                    try{
+                        isJsonObject =$.parseJSON(data);
+                    }catch (e){
+                        isJsonObject = data;
+                    }
+                    typeof callback === "function" ? callback(isJsonObject,status) : action(function(){
+                        typeof input === "function" && input(isJsonObject,status);
                     });
                 }):action(function(){
                     typeof callback === "function" ? callback(data,status) : action(function(){
@@ -80,7 +92,7 @@
                 else if(isConfirm){
                     alertlightJS.prototype.$post(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
                         typeof callback === "function" && action(function(){
-                            callback(true,{value:data,status:status},function(title,text,type){
+                                callback(true,{value:data,status:status},function(title,text,type){
                                 typeof title === "string" && typeof text === "string" ? action(function(){
                                     swal(title,text,typeof type === "string"? type : "success");
                                 }):action(function(){
@@ -126,7 +138,7 @@
                     });
                 }
                 else if(isConfirm){
-                    return this.$get(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
+                    alertlightJS.prototype.$get(postOpt.url,typeof postOpt.input === "object"? postOpt.input:{},function(data,status){
                         typeof callback === "function" && action(function(){
                             callback(true,{value:data,status:status},function(title,text,type){
                                 typeof title === "string" && typeof text === "string" ? action(function(){
@@ -141,7 +153,7 @@
                     });
                 }else{
                     typeof callback === "function" && action(function(){
-                        callback(true,{},function(title,text,type){
+                        callback(false,{},function(title,text,type){
                             typeof title === "string" && typeof text === "string" ? action(function(){
                                 swal(title,text,typeof type === "string"? type : "error");
                             }):action(function(){
@@ -166,27 +178,21 @@
             });
         },
         $foreach: function(reff,value){
-            var regex_i,regex, text=$(reff).html(), num= 1,numSet=false,matches;
-            if(setUp.symbol==="customize"){
-                regex_i =setUp.regExp_gi;
-                regex   = setUp.regExp;
-            }
-            else if(setUp.symbol==="{{"){
-                regex_i =/{{([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)}}/gi;
-                regex   =/{{([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)}}/;
-            }
-            else if(setUp.symbol==="(["){
-                regex_i =/\(\[([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\]\)/gi;
-                regex   =/\(\[([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\]\)/;
-            }
-            else if(setUp.symbol==="@("){
-                regex_i =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/gi;
-                regex   =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/;
-            }
-            else{
-                regex_i =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/gi;
-                regex   =/@\(([a-z.]+|[a-z.++]+|[a-z.]+\[\d+\]\+)\)\)/;
-            }
+            var text=$(reff).html(), num= 1,numSet=false;
+            var getMatch = function (str,flags) {
+                var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+)"; symbol += setUp.symbolEnd; var Expr;
+                typeof flags != "undefined" ? action(function () {
+                    Expr = new RegExp(symbol,flags);
+                }): action(function () {
+                    Expr = new RegExp(symbol);
+                });
+                if(typeof str != "undefined"){
+                    return str.match(Expr);
+                }else{
+                    return null;
+                }
+            };
+
             if(typeof $(reff).data('live-cache')!=="undefined"||$(reff).data('live-cache')!=""){
                 var cache   =$(reff).data('live-cache');
                 if(store[cache]!==undefined){
@@ -196,16 +202,15 @@
                 }
             }
             $(reff).html("");
-            matches=text.match(regex_i);
             typeof value === "object" ? action(function(){
-                function replace_str(test,txt,values){
-                    var string=txt;
-                    $.each(test, function(key,value){
-                        var data=(value.match(regex))[1];
+                function replace_str(matchs,values){
+                    var string=text;
+                    $.each(matchs, function(key,value){
+                        var data=getMatch(value)[1];
                         if(data==='num++'){
                             string =string.replace(value,num++);
                         }
-                        else if((/[a-z.]+\[\d+\]\+/).test(data)){
+                        else if((/num\[\d+\]\+/).test(data)){
                             if(numSet===false){
                                 num=(data.match(/num\[(\d+)\]\+/))[1];
                                 numSet=true;
@@ -224,19 +229,46 @@
                         console.log("$foreach -> not object, data invalid");
                         return false;
                     }
+                    if(getMatch(text,"gi") === null){
+                        console.log(getMatch(text,"gi"));
+                        return false;
+                    }
                     var html;
-                    html +=replace_str(matches,text,values);
+                    html +=replace_str(getMatch(text,"gi"),values);
                     $(reff+':last').append(html);
                 });
             }) : action(function(){
                 console.log("$foreach -> not object, data invalid");
             });
-
+        },
+        $id:function(id){
+            return {
+                click :function(callback){ // jQuery identifier not working event attribute & tag add dynamically
+                    $(document).on('click', id, function() { // this (jQuery) method is working
+                        callback($(this));
+                    });
+                },
+                dblclick :function(callback){ // jQuery identifier not working event attribute & tag add dynamically
+                    $(document).on('dblclick', id, function() { // this (jQuery) method is working
+                        callback($(this));
+                    });
+                },
+                mouseenter :function(callback){ // jQuery identifier not working event attribute & tag add dynamically
+                    $(document).on('mouseenter', id, function() { // this (jQuery) method is working
+                        callback($(this));
+                    });
+                },
+                mouseleave :function(callback){ // jQuery identifier not working event attribute & tag add dynamically
+                    $(document).on('mouseleave', id, function() { // this (jQuery) method is working
+                        callback($(this));
+                    });
+                }
+            };
         }
     };
     global.alertlightJS= alertlightJS;
     global.$$=new alertlightJS();
     global.$alrt=new alertlightJS();
-})(window !== "undefined"? window : this,jQuery !== "undefined"? jQuery : "error",function(action){
+})(typeof window !== "undefined"? window : this,typeof jQuery !== "undefined"? jQuery : "error",function(action){
     typeof action==="function" && action();
 });
