@@ -1,9 +1,15 @@
-# alertlightJS V.0.2.2  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/releases)
+# alertlightJS V.0.2.3  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/releases)
 alertlightJS is a combination of sweet alerts with jquery
 
 refer to branch master for new update, because not all of npm, bower,and composer package has been update.
 ###Bug fix 0.2.2
     - .$foreach() looping without removing symbols
+###Bug fix 0.2.3
+    - jsonObject error
+    - .$swalGet if canceled, return true
+### Adding (+) & deleted (-)
+    (+)symbolBegin & symbolEnd
+    (-)symbol
 ###Install
     bower install alertLightJS -save
     npm install --save alertlightjs
@@ -16,7 +22,7 @@ refer to branch master for new update, because not all of npm, bower,and compose
     <script src="http://t4t5.github.io/sweetalert/dist/sweetalert.min.js"></script>
     <script src="dist/alertlightjs.min.js"></script>
 ###Online Source    
-    <script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs-0-2-1.min.js"></script>
+    <script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs-0-2-3.min.js"></script>
 ##Usage
     $('#yourID').click(function(){
             var myAlert= new alertlightJS();
