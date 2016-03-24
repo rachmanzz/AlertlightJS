@@ -264,7 +264,37 @@
                     });
                 }
             };
+        },
+        $sync:function(run){
+            var timing=2000, looping =function(){
+                run();
+                setTimeout(looping,timing);
+            };
+            var identifier={
+                    delay : function(delay){
+                        timing = delay;
+                        return identifier;
+                    },
+                    inSecond: function () {
+                        timing = timing * 1000;
+                        return identifier;
+                    },
+                    inMinute: function () {
+                        timing = (timing * 60 ) * 1000;
+                        return identifier;
+                    },
+                    execute:function(){
+                        typeof run === "function" ? action(function(){
+                            return new looping();
+                        }):action(function(){
+                            console.log('sync is not function');
+                        });
+
+                    }
+                };
+            return identifier;
         }
+
     };
     global.alertlightJS= alertlightJS;
     global.$$=new alertlightJS();
