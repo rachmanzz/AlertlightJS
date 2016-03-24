@@ -1,7 +1,7 @@
 {
   "name"          : "alertLightJS",
   "description"   : "AlertlightJS is a combination of sweet alerts with jquery",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": [
     "dist/js/alertlightjs.min.js"
   ],
