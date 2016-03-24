@@ -29,20 +29,39 @@
     <div class="container">
       <section id="main_content">
         <h1>
-<a id="alertlightjs" class="anchor" href="#alertlightjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>alertlightJS</h1>
+<a id="alertlightjs-v023--other-version" class="anchor" href="#alertlightjs-v023--other-version" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>alertlightJS V.0.2.3  <a href="https://github.com/rachmanzz/AlertlightJS/releases">(Other Version)</a>
+</h1>
 
 <p>alertlightJS is a combination of sweet alerts with jquery</p>
 
-<h3>
-<a id="install-using-bower" class="anchor" href="#install-using-bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install using Bower</h3>
+<p>refer to branch master for new update, because not all of npm, bower,and composer package has been update.</p>
 
-<pre><code>bower install alertLightJS -save
+<h3>
+<a id="bug-fix-022" class="anchor" href="#bug-fix-022" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bug fix 0.2.2</h3>
+
+<pre><code>- .$foreach() looping without removing symbols
 </code></pre>
 
 <h3>
-<a id="install-using-npm" class="anchor" href="#install-using-npm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install using npm</h3>
+<a id="bug-fix-023" class="anchor" href="#bug-fix-023" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bug fix 0.2.3</h3>
 
-<pre><code>npm install --save alertlightjs
+<pre><code>- jsonObject error
+- .$swalGet if canceled, return true
+</code></pre>
+
+<h3>
+<a id="adding---deleted--" class="anchor" href="#adding---deleted--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding (+) &amp; deleted (-)</h3>
+
+<pre><code>(+)symbolBegin &amp; symbolEnd
+(-)symbol
+</code></pre>
+
+<h3>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h3>
+
+<pre><code>bower install alertLightJS -save
+npm install --save alertlightjs
+composer require rachmanzz/alertlightjs    
 </code></pre>
 
 <h3>
@@ -53,20 +72,21 @@
 &lt;script src="//code.jquery.com/jquery-1.12.0.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"&gt;&lt;/script&gt;
 &lt;script src="http://t4t5.github.io/sweetalert/dist/sweetalert.min.js"&gt;&lt;/script&gt;
-&lt;script src="dist/js/alertlightjs.min.js"&gt;&lt;/script&gt;
+&lt;script src="dist/alertlightjs.min.js"&gt;&lt;/script&gt;
 </code></pre>
 
 <h3>
 <a id="online-source" class="anchor" href="#online-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Online Source</h3>
 
-<pre><code>&lt;script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs.min.js"&gt;&lt;/script&gt;
+<pre><code>&lt;script src="http://rachmanzz.github.io/AlertlightJS/dist/js/alertlightjs-0-2-3.min.js"&gt;&lt;/script&gt;
 </code></pre>
 
 <h2>
-<a id="using" class="anchor" href="#using" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <pre><code>$('#yourID').click(function(){
-        alertlightJS.$swalPost({     // $swalGet for GET Method
+        var myAlert= new alertlightJS();
+        myAlert.$swalPost({     // $swalGet for GET Method
             title : "Sweet Alert Tittle",
             text  : "Sweet Alert Text.",
             type  : "warning",
@@ -79,9 +99,9 @@
             }
         },function(isConfirm,data,swal){
             if(isConfirm){
-                    swal(['title','text']);
+                    swal('title','text');
             }else{
-                swal(['title','text']);
+                swal('title','text');
             }
         });
     });
@@ -109,15 +129,15 @@
 <h4>
 <a id="get-data-after-post" class="anchor" href="#get-data-after-post" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>get data after post:</h4>
 
-<pre><code> data.status // get status after your data is submit. return true/false
+<pre><code> data.status // get status after your data is submit. return success/error
  data.value // data have been parse to Json
 </code></pre>
 
 <h4>
 <a id="obtain-raw-data" class="anchor" href="#obtain-raw-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>obtain raw data</h4>
 
-<pre><code> alertlightJS.setup({json:false});
- alertlightJS.$swalPost(
+<pre><code> var myAlert= new alertlightJS({json:false}); //or myAlert.$set({json:false});
+ myAlert.$swalPost(
     // alertlightJS script here, data.value to obtain raw data 
  );
 </code></pre>
@@ -125,7 +145,7 @@
 <h4>
 <a id="other-method" class="anchor" href="#other-method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>other method</h4>
 
-<pre><code> alertlightJS.setup({json:false},function(alertJS){
+<pre><code> alertlightJS.$set({json:false},function(alertJS){
     alertJS.$swalPost(
                     // alertlightJS script here 
                  );
@@ -135,14 +155,90 @@
 <h4>
 <a id="show-alert-after-confirm" class="anchor" href="#show-alert-after-confirm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>show alert after confirm:</h4>
 
-<pre><code>swal(['title','text']); // if isConfirm == true, swal type will be set "success" / false will be set "error"
+<pre><code>swal('title','text'); // if isConfirm == true, swal type will be set "success" / false will be set "error"
 </code></pre>
 
 <h4>
 <a id="or" class="anchor" href="#or" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>or</h4>
 
-<pre><code>swal(['title','text','warning']); // type: warning | success | error
+<pre><code>swal('title','text','warning'); // type: warning | success | error
 </code></pre>
+
+<h4>
+<a id="all-function" class="anchor" href="#all-function" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>All Function</h4>
+
+<h5>
+<a id="swalpost--swalget" class="anchor" href="#swalpost--swalget" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.$swalPost | $swalGet</h5>
+
+<table>
+<thead>
+<tr>
+<th>Method Get</th>
+<th>Method Post</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.$swalGet(swalOpt,postOpt)</td>
+<td>.$swalPost(swalOpt,postOpt)</td>
+</tr>
+<tr>
+<td>.$swalGet(swalOpt,postOpt,callback)</td>
+<td>.$swalPost(swalOpt,postOpt,callback)</td>
+</tr>
+</tbody>
+</table>
+
+<p>usage <a href="https://github.com/rachmanzz/AlertlightJS/wiki/show-alert-&amp;-send">readmore here</a></p>
+
+<h5>
+<a id="post--get" class="anchor" href="#post--get" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>.$Post | $Get</h5>
+
+<table>
+<thead>
+<tr>
+<th>Post</th>
+<th>Get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.$post(url,callback)</td>
+<td>.$get(url,callback)</td>
+</tr>
+<tr>
+<td>.$post(url,input,callback)</td>
+<td>.$get(url,input,callback)</td>
+</tr>
+</tbody>
+</table>
+
+<p>usage <a href="https://github.com/rachmanzz/AlertlightJS/wiki/send-data">readmore here</a></p>
+
+<table>
+<thead>
+<tr>
+<th>other</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.$set(opt,callback)</td>
+<td>callback is optional</td>
+</tr>
+<tr>
+<td>.$table(id,object,callback)</td>
+<td></td>
+</tr>
+<tr>
+<td>.$foreach(id,object)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>usage <a href="https://github.com/rachmanzz/AlertlightJS/wiki/other">readmore here</a></p>
 
 <h1>
 <a id="remember" class="anchor" href="#remember" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remember</h1>
