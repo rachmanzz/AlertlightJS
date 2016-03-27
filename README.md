@@ -101,6 +101,6 @@ usage [readmore here](https://github.com/rachmanzz/AlertlightJS/wiki/other)
 
 
 #Remember
-Remember to load boostrap, sweet-alert, and Jquery script 
+Remember to load sweet-alert, and Jquery script 
 #other
 http://rachmanzz.github.io/alertifylight/
