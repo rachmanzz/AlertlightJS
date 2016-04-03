@@ -23,7 +23,7 @@
             $.extend(swal,swalOpt.extra);
         });
         return swal;
-    };
+    }, numberFrom=1;
     var alertlightJS=function(set){
         typeof set==="object" && $.extend(setUp,set);
     };
@@ -177,8 +177,12 @@
                 $('table'+table+' > tbody:last').append('<tr>'+data+'</tr>');
             });
         },
+        $num : function (num) {
+            numberFrom = num;
+            return this;
+        },
         $foreach: function(reff,value){
-            var text=$(reff).html(), num= 1,numSet=false;
+            var text=$(reff).html(), num= numberFrom,numSet=false;
             var getMatch = function (str,flags) {
                 var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+)"; symbol += setUp.symbolEnd; var Expr;
                 typeof flags != "undefined" ? action(function () {
@@ -294,6 +298,7 @@
                 };
             return identifier;
         }
+
 
     };
     global.alertlightJS= alertlightJS;
