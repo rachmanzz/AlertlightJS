@@ -184,7 +184,7 @@
         $foreach: function(reff,value){
             var text=$(reff).html(), num= numberFrom,numSet=false;
             var getMatch = function (str,flags) {
-                var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+)"; symbol += setUp.symbolEnd; var Expr;
+                var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]\\([ #-:_a-zA-Z0-9.]+\\))"; symbol += setUp.symbolEnd; var Expr;
                 typeof flags != "undefined" ? action(function () {
                     Expr = new RegExp(symbol,flags);
                 }): action(function () {
@@ -220,6 +220,39 @@
                                 numSet=true;
                             }
                             string =string.replace(value,num++);
+                        }
+                        else if((/replace\[[_a-zA-Z0-9.]+\]\([ #:_a-zA-Z0-9.]+\)/).test(data)){
+                            var getAtt,getResl, getArray=(data.match(/replace\[([_a-zA-Z0-9.]+)\]\(([ #:_a-zA-Z0-9.]+)\)/));
+                            if((/([#_a-zA-Z0-9.]+):([ #_a-zA-Z0-9.]+)/).test((getArray[2]))){
+                                getAtt=(getArray[2]).match(/([#_a-zA-Z0-9.]+):([ #_a-zA-Z0-9.]+)/);
+                                getResl=values[getArray[1]].replace(getAtt[1],getAtt[2]);
+                            }else{
+                                getAtt=(getArray[2]).match(/([#_a-zA-Z0-9.]+)/);
+                                getResl=values[getArray[1]].replace(getAtt[1],"");
+                            }
+                            string =string.replace(value,getResl);
+                        }
+                        else if((/numberFormat(\[[_a-zA-Z0-9.]+\]|\[[_a-zA-Z0-9.]+\]\([#-_a-zA-Z0-9.]+\))/).test(data)){
+                            var getNumberFormat;
+                            if(((/numberFormat(\[[_a-zA-Z0-9.]+\]\([#-_a-zA-Z0-9.]+\))/).test(data))){
+                                getNumberFormat=data.match(/numberFormat\[([_a-zA-Z0-9.]+)\]\(([#-_a-zA-Z0-9.]+)\)/);
+                                getNumberFormat=new Intl.NumberFormat(getNumberFormat[2]).format(parseInt(values[getNumberFormat[1]]));
+                            }else{
+                                getNumberFormat=data.match(/numberFormat\[([_a-zA-Z0-9.]+)\]/);
+                                getNumberFormat=new Intl.NumberFormat().format(parseInt(values[getNumberFormat[1]]));
+                            }
+                            string =string.replace(value,getNumberFormat);
+                        }
+                        else if((/limitText\[[_a-zA-Z0-9.]+\]\([ #:_a-zA-Z0-9.]+\)/).test(data)){
+                            var getAtt, getLimitText=data.match(/limitText\[([_a-zA-Z0-9.]+)\]\(([ #:_a-zA-Z0-9.]+)\)/);
+                            if((/([#_a-zA-Z0-9.]+):([ #_a-zA-Z0-9.]+)/).test((getLimitText[2]))){
+                                getAtt=(getLimitText[2].match(/([#_a-zA-Z0-9.]+):([ #_a-zA-Z0-9.]+)/));
+                                getLimitText=values[getLimitText[1]].substring(getAtt[1],getAtt[2]);
+
+                            }else{
+                                getLimitText=values[getLimitText[1]].substring(0,getLimitText[2]);
+                            }
+                            string =string.replace(value,getLimitText);
                         }
                         else if(typeof values[data]==="undefined"){}
                         else{
