@@ -184,7 +184,7 @@
         $foreach: function(reff,value){
             var text=$(reff).html(), num= numberFrom,numSet=false;
             var getMatch = function (str,flags) {
-                var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]\\([ #-:_a-zA-Z0-9.]+\\))"; symbol += setUp.symbolEnd; var Expr;
+                var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]\\([#-:_a-zA-Z0-9.]+\\))"; symbol += setUp.symbolEnd; var Expr;
                 typeof flags != "undefined" ? action(function () {
                     Expr = new RegExp(symbol,flags);
                 }): action(function () {
