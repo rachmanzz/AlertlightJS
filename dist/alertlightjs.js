@@ -184,7 +184,7 @@
         $foreach: function(reff,value){
             var text=$(reff).html(), num= numberFrom,numSet=false;
             var getMatch = function (str,flags) {
-                var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]\\([#-:_a-zA-Z0-9.]+\\))"; symbol += setUp.symbolEnd; var Expr;
+                var symbol = setUp.symbolBegin; symbol +="([_a-zA-Z0-9.]+|[a-z.++]+|[a-z.]+\\[\\d+\\]\\+|math\\[[+-/*_a-zA-Z0-9.]+\\]|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]|[a-zA-Z.]+\\[[_a-zA-Z0-9.]+\\]\\([#-:_a-zA-Z0-9.]+\\))"; symbol += setUp.symbolEnd; var Expr;
                 typeof flags != "undefined" ? action(function () {
                     Expr = new RegExp(symbol,flags);
                 }): action(function () {
@@ -242,6 +242,16 @@
                                 getNumberFormat=new Intl.NumberFormat().format(parseInt(values[getNumberFormat[1]]));
                             }
                             string =string.replace(value,getNumberFormat);
+                        }else if((/math\[[+-/*_a-zA-Z0-9.]+\]/).test(data)){
+                            var result=data.match(/math\[([+-/*_a-zA-Z0-9.]+)\]/);
+                            var getVal=result[1].match(/([_a-zA-Z0-9.]+)/gi);
+                            result=result[1]
+                            for(var i=0; i < getVal.length; i++){
+                                if((/[0-9]+/).test(getVal[i])!=true){
+                                    result=result.replace(getVal[i],values[getVal[i]]);
+                                }
+                            }
+                            string =string.replace(value,eval(result));
                         }
                         else if((/limitText\[[_a-zA-Z0-9.]+\]\([ #:_a-zA-Z0-9.]+\)/).test(data)){
                             var getAtt, getLimitText=data.match(/limitText\[([_a-zA-Z0-9.]+)\]\(([ #:_a-zA-Z0-9.]+)\)/);
