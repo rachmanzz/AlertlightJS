@@ -1,4 +1,4 @@
-# alertlightJS V.0.2.3  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/releases)
+# alertlightJS V.0.2.3  [(Other Version)](https://github.com/rachmanzz/AlertlightJS/releases) (not update again)
 alertlightJS is a combination of sweet alerts with jquery
 
 refer to branch master for new update, because not all of npm, bower,and composer package has been update.
