@@ -15,7 +15,7 @@
     "sweet-alert"
   ],
   "dependencies": {
-    "jquery" : "~1.12.*",
+    "jquery" : "~>3.0.*",
     "bootstrap" : "latest",
     "sweetalert": "latest"
   },
